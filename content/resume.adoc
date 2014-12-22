@@ -6,7 +6,7 @@ Robert McIntosh
 :source-highlighter: prettify
 :linkattrs:
 :id: résumé
-:william: http://www.williams.com/[Williams Energy, window="_blank"]
+:williams: http://www.williams.com/[Williams Energy, window="_blank"]
 :git: http://git-scm.com/[Git, window="_blank"]
 :gradle: http://www.gradle.org/[Gradle, window="_blank"]
 :grails: http://grails.org[Grails, window="_blank"]
@@ -35,7 +35,7 @@ Software developer with a love of performance and scalability.
 
 == Experience
 
-[big]*{williams} +
+[big]*{williams}* +
 *__Senior Software Engineer__* +
 July 2013 - Present
 
@@ -48,7 +48,7 @@ July 2013 - Present
 * Setup {stash} and {bamboo}. Migrated team from SVN to Git.
 
 
-[big]*{monsanto} - * +
+[big]*{monsanto}* +
 *__Technical Lead - Frameworks__* +
 July 2011 – July 2013
 
@@ -105,4 +105,4 @@ March 2010 - July 2010
 
 == Open Source Contributions
 
-* http://github.com/jdpgrailsdev[Personal GitHub Account, window="_blank"]
+* http://github.com/webmogul[Personal GitHub Account, window="_blank"]
