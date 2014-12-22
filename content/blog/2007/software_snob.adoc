@@ -1,0 +1,21 @@
+title=Being a software snob
+date=2007-04-24
+type=post
+tags=humor
+status=published
+~~~~~~
+
+The other day on the way home after listening to me go on and on about one of the POS vendor apps we have, my wife came to the conclusion that I was a software snob.
+
+At first it took me off guard. Usually she just says something like “that’s nice dear” or “are you finished?”, but this time she came right out and called it like she saw it. After I laughed at her observation, I came to the conclusion that she is right.
+
+=== Being a software snob
+
+What kind of snob? well, I don’t get into the debates too often about what language rules over another or which framework is best, yada, yada. Sure I’ll like one over the other, but I don’t get religious about them like some people. However, what I do get religious about is bad software. I can’t stand it. I don’t care what language it is written in or if it follows a strict object oriented approach or whatever, just that it is well implemented and it has good features for the price.
+
+The ironic thing is that in the software world you usually don’t get what you pay for. There are few products that are actually worth their price tags, and I would say a good 80%-90% of the time you can find a really good open source product (or 3 or 4) that will do it better, has better features, etc.
+
+Yes, I’ve worked for corporations long enough to know that corps like to buy from a vendor for some perceived benefit of support or whatever, but even then the support is usually horrible and not worth the price that is being paid for it.
+
+I’m not saying that I’m against all vendor or commercial software. Not at all, I’m just against over priced AND poorly done software. One example is the content management system that we have. It comes in at a good low 6 figure price tag, has the most archaic management interface you will ever see, and their whole architecture is a single DLL (written in Delphi for those that care) running against SQL-Server. It doesn’t take a genius to figure out where the bottle neck is in this system. Never mind that there is no server-side validation of anything (can you say SQL-injection?), no CAPTCHA support (gotta love spam…) and at first look the templating system seems way over complicated. One look at say Joomla! or Drupal or one of the many other open source CMS solutions and you can’t help but think WHY?!?
+

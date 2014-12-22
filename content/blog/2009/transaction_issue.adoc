@@ -1,0 +1,30 @@
+title=Interesting transaction issue
+date=2009-10-22
+type=post
+tags=grails
+status=published
+~~~~~~
+
+I’m working on a new Grails based project and came across a transaction issue. The application is an ecommerce app and as such the placing of the order has a lot going on that should all reside in a transaction.
+
+Being a Grails app I decided to put the processing inside a transactional service method. So far so good. The flow looks something like this:
+. Create billing address
+. Create credit card
+. Assign billing address to card
+. Create shipping address
+. Loop through the cart items and for each item find stock(inventory) to fulfill each
+. Mark the stock as sold as applied
+. Add each order item to the order
+. Assign order to customer
+. Save order and customer
+
+That is a little oversimplified, but you get the idea. So, what was the problem?
+The problem came in during the select for the stock. This select would cause a hibernate exception about the address being a transient object. Well that made no sense at all.
+
+At first I started down the road of abandoning the whole transaction thing and doing it manually. Naturally that was ugly and very error prone, so I did some research to find out what the cause might be. Came up empty.
+
+My gut said that a select should not cause a problem with unsaved data. Then I thought that maybe hibernate was enforcing some sort of isolation level mechanism. Most of us never bother with database isolation levels (and fewer even know what they are sadly enough), but perhaps that was causing it. So what I did was move all the save() calls from the end to where they were being used.
+
+In other words I called save on the two addresses and the credit card before the loops on getting and assigning stock.
+
+Worked like a charm. I now have the whole thing in a transaction as it should be.

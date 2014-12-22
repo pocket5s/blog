@@ -1,0 +1,25 @@
+title=On Git and SVN
+date=2011-07-06
+type=post
+tags=git, grails
+status=published
+~~~~~~
+
+_reprint from old blog_
+
+Naturally if you search for pros and cons of Git vs. SVN you will find all sorts of compelling arguments on both sides. The vast majority are technical such as distributed vs. central and, IMO, completely miss a big point.
+
+As a bit of background, like most non-microsoft based developers I used CVS and SVN for the better part of my 12 years in development. Then a few years ago when I was working for Zappos, and we moved from perl to java, we eventually moved from SVN to Git. Now at the time I was a bit reluctant, but it was more about user friendliness and such. After using Git there and personally via GitHub, I’ve come to the conclusion that most developers are missing a huge opportunity in source control.
+
+See, I’ve come to realize that SVN is a decent versioning system, but a horrible source control system. The typical cycle in a SVN environment is to use the head branch as your working tree and branch/tag when you have a release. Well anyone who has done development long enough knows the pitfalls of such a setup. To add to that, commits are far fewer and at far longer intervals than when properly using Git. The reason is generally quite simple, as branching rather painful in SVN and a total breeze in Git. It seems that in every SVN environment I’ve worked, SVN was just a glorified backup. A versioned backup if you will. A place where you pushed your code and prayed it didn’t break anything. And heaven forbid if you have to work on multiple things at once and then go back and fix something.
+
+The way we had it setup at Zappos, and to this day I still think is the best setup I’ve ever used at a company, is we had a release manager, and amongst other duties, he maintained the “central” git repo. At first glance this isn’t terribly different than using SVN, however, no developer could commit to the master branch. The master branch represented what was currently in production, and as such it was always the baseline. We used Jira for our ticketing/issue system, and everything we did was a ticket. Nothing too out of the ordinary there.
+
+However, what we did was we branched our local git repo for each ticket that we worked on. This is very important. EACH ticket had its own branch. Some people would faint at such a process, but with Git’s seamless branching it was a joy. It also meant that we could work on many tickets at once without affecting the others or more importantly without breaking anyone else’s. So, when we were complete with a ticket/branch, we pushed it up to a specific repo that was controlled by the release manager (RM). Notice I didn’t say merge. We pushed our branch up, and using Gitorius (a local install), we made a merge request.
+
+From there, we switched branches and worked on something else. When a set of tickets were ready for testing, the RM merged in all the tickets required for that particular QA release and pushed to the QA servers. QA did their thing, and if there were issues, we would switch to that branch, made changes and pushed that branch back up and the cycle repeated until it was cleared. Once it was verified and after it was pushed to production, the RM merged those changes back into master and we would pull and chug right along. We would also removed that particular branch from our local repo as it was no longer needed.
+
+Someone coming from the ‘traditional’ way of doing things would read that and think it was a maintenance nightmare, but it really wasn’t. even with 40+ developers it worked pretty smooth. It also meant that two devs, usually a back-end (like me) and a front end/html dev could work on a ticket together and push back and forth between the two without anyone else being affected. That is the distributed nature of Git at work. It was not uncommon for any one dev to have half a dozen or more local branches going at any one time. It was just so easy to branch, merge and push as needed.
+
+To me, that is real source *control* and not just source *versioning*.
+

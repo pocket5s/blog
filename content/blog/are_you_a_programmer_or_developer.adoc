@@ -1,0 +1,18 @@
+title=Are you a programmer or developer?
+date=2006-12-28
+type=post
+tags=career
+status=published
+~~~~~~
+
+The two job descriptions seem to be more or less interchangeable, but more and more I’m starting to think there is a clear difference between the two. When someone asks me what I do for a living and they are not in the IT field I usually just say that I’m a computer programmer. Even though they really don’t know what that means, it gets the ‘ahh, OK’ response followed by the usual question of if I can fix their computer, email or whatever else they can’t figure out how to do. At this point my wife usually chimes in and says that what I do is more than just being a programmer and while she is correct most people don’t understand the difference.
+
+The one occurrence that stands out was when I was playing poker one night and one of the guys at the table mentioned that he was a programmer. I asked what kind of programming he did and when he said that he built custom Excel spreadsheets for his clients I was stunned. I thought maybe I missed something. Did this guy say he was a programmer and that he builds Excel spreadsheets? OK, now I know that you can use VBA to create some really cool spreadsheets but that is far cry from what I do. It was then that I realized the distinction between programming and software development.
+
+So what is the difference?
+
+The simplest description that I can come up with is that developers are capable of building the software that programmers use. Think about that for a minute. I just took a look at what Wikipedia had to say about the two and for the most part I agree with their interpretation. Developers are those that usually build software infrastructure such as frameworks and common services while programmers are those that use these services. Most developers don’t really like to create customer facing applications, but usually do at various times and more importantly they can do it.
+
+This means that developers are the next level beyond programmers. Obviously to become a developer you have to had been a programmer for some time to acquire the needed skills and experience. Not all programmers make the progression and that is fine. If all programmers made the progression to developers we would all be in trouble. Talk about too many chefs in the kitchen!
+
+So am I the only one that sees a difference here?

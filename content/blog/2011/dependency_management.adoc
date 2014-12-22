@@ -1,0 +1,20 @@
+title=The joke that is dependency management
+date=2011-08-06
+type=post
+tags=java, grails
+status=published
+~~~~~~
+
+_reprint from old blog_
+
+For the second time in this job I’ve had to deal with maven. So far I’ve avoided it like the plague, but now I have to work on some old code and the company “standard” is to use maven. So, I download the new version, set up my path and attempt to do a simple build. I add one dependency, c3p0, and maven in all its glory can’t find it. Why on God’s green earth does anyone submit themselves to this kind of bullshit? Not to mention the 440+ pom files maven decide it need to download. WTF?
+
+The first time I had to deal with it was with the stupid Eclipse plugin and maven would keep putting in jars I didn’t need or ask for and wouldn’t supply the ones I did ask for. I gave up and wrote an Ant script and everything worked just like I wanted it to.
+Seriously, all the dependency management zealots need to see a shrink. By time you setup the stupid pom file, or ivy file if you like, I could have downloaded the jar, dropped it into my lib directory and presto it works. Worse case, you have two libs, one for build only jars and another for build and deploy. That’s it.
+
+Dependency management and tools like maven just underscore the java community’s desire to over build, over architect and generally make things far more difficult than they need to be. In 12 years of doing java I’ve never had that thought that putting jars into a directory was a difficult thing.
+
+“What about different versions of jars?”
+Are you kidding me? I upgrade needed jars much like I upgrade to a new JVM or a new Tomcat. Evaluate and if needed replace the jar with the new version. Oh boy, that was so hard I should use a tool to make it harder!
+Adding a new jar (excuse me, dependency) is just as painful. I write four lines of XML to describe the dependency, spend several minutes figuring out what repo has the damn thing, and if needed write some more XML to point to that repo. Then pray it works.
+Compare that to downloading the jar, dropping it into my existing lib directory and not having to configure anything. Yea, that 6 lines of XML that I wrote in the beginning of my Ant setup telling it where my classpath is still works. Imagine that.

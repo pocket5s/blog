@@ -1,0 +1,32 @@
+title=Is Spring becoming what it despised?
+date=2007-03-09
+type=post
+tags=spring
+status=published
+~~~~~~
+
+Spring is a great framework, but it seems like it is turning into exactly what it was trying to solve: a complex, full stack framework. 
+It was created out of frustration with the then J2EE (now JEE of course) stack of technologies. 
+Spring’s approach was good, fairly simple and got the job done. But is it now too big and people jumping ship?
+
+If you take a recent look at the most read items on JavaBlogs, it seems so. 
+From Seam to Guice, it looks like there are competitors out there looking to fight Spring for king of the framework mountain.
+
+To Spring’s credit, it has a large following and won’t go by the wayside anytime soon, 
+but if these new annotation based frameworks get some traction I would expect some pretty good adoption among them. 
+Give a year or so for a few to come out and then another year or so before the prominent ones take the market share away from each 
+other and slowly from Spring.
+
+=== The Driving Force
+Undoubtedly, annotations instrumental to leading this change. Just a few years ago XML configs were the norm, 
+but when Java added annotations to Java 5, everyone was tired of those XML files and looking for a better way. 
+Thankfully the core JEE stack started using them and everyone else jumped on that wagon. I’m still not a fan 
+of using them for everything, but in a lot of cases they certainly make sense.
+
+The second major factor is pure size and complexity. Much like JEE which it sought to replace, 
+Spring has become too big. Just like JEE, you don’t have to use the whole bag of tricks, but people don’t look at it like that. 
+They see this huge feature list and potentially complex configuration and look for something simpler. In a way it is a shame since 
+Spring can be very helpful and non-complex if you just took the time to learn the basics and forget about all the extra 
+features that you can tack on.
+
+Let the framework wars begin…

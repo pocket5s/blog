@@ -1,0 +1,35 @@
+title=How often are you setup to fail?
+date=2007-02-22
+type=post
+tags=career
+status=published
+~~~~~~
+
+As developers in any decent sized corporate environment will tell you, being set up to fail is an all too common occurrence. Sometimes it is the business that wants things too quickly, sometimes management won’t take the tech staff’s warnings to higher levels and even sometimes it is our own over ambition that causes us to fail.
+
+It is one thing to have a high pressure schedule and an all together different thing to have an impossible, destined to fail schedule. 
+
+Sometimes we tend to lump the two things together, but there are differences.
+
+=== High Pressure
+The high pressure schedule usually translates into a quick timeline. A quick timeline isn’t always a problem from a practical standpoint. The problem here is a matter of how the application is built. Naturally we developers like to use the coolest toys and techniques when building a new application. It keeps are interest up and expands our knowledge. Some developers even want to incorporate the latest elaborate architectures in their new projects.
+
+That is all good and fine, but wanting to do so will almost always impact the schedule. There is a lot to be said for making it simple. I believe it was Einstein that said make it as simple as you can, but no more. That may mean a simple two-tier approach with some simple SQL. I hear the purists falling out of their chairs now. What, no object model?!?!? How dare you! or “Why didn’t you use (insert favorite framework here)?!?!”
+
+I know, I used to be one of those who wanted the best design and architecture I could come up with. The problem is that eventually some of us out grow that and realize that such an approach has its place, just not in every single application. One of the reasons why Ruby on Rails has gained so much popularity is because of the quick turnaround without having to build an elaborate architecture. Yes it is a code generating framework to a certain extent, but it has been proven in many cases to just work. Take a look at the products from 37Signals as proof.
+
+So, a high pressure schedule can be met by making choices on how it is implemented. You may not always like those choices, but you can’t like everything.
+
+=== Impossible & Doomed to Fail
+These projects are known to fail right from the start. Any seasoned developer can smell them many cubicles away. You hear the rumors about management’s new product. The sales staff are already selling it, the CIO has already promised a date and then you hear the requirements. You have to build an eBay killer in 3 months.
+
+At first the dev team laughs, praying it is a joke. Then you realize it isn’t a joke and the whole team starts talking amongst themselves about how this will never work. Finally someone gets the nerve to tell their manager that there is no way this can be done. At first the manager tries to encourage everyone, give a pep rally and buy everyone some cookies. After the first month, a couple more people come forward and say the same thing, but the manager won’t take it any higher, knowing that the business has already set the date, the CIO has promised and there is no way he is going to be a messenger of doom.
+
+Everyone starts working way too much overtime and accomplishing far too little due to stress, fatigue and low morale. Month 3 comes along and naturally it isn’t ready. The business is pissed off, the CIO is furious, the lowly manager is wondering what went wrong. The dev team is ready to quit.
+
+Sadly this happens and I’ve seen it first hand. Being set up to fail is the worst for me. If I fail on my own I can accept that, but going into a project knowing from the outset that there is no way it will ever make it to fruition is a disheartening feeling. It may be the impossible schedule, no resources, or just outrageous goals but the end result is the same. The business ends up not trusting you anymore, you hate everyone for having been put in that position and on and on.
+Unfortunately there isn’t much you can do about it, other than keep bringing the issue up again and again, but if management won’t listen you are doomed.
+
+I’m in the midst of trying to avoid one of these now, which is why I wrote this. I’m sure there are others out there going through this pain right now.
+
+Are you being set up to fail?
