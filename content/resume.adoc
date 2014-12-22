@@ -1,0 +1,108 @@
+= Résumé
+Robert McIntosh
+2014-12-19
+:jbake-type: page
+:jbake-status: published
+:source-highlighter: prettify
+:linkattrs:
+:id: résumé
+:william: http://www.williams.com/[Williams Energy, window="_blank"]
+:git: http://git-scm.com/[Git, window="_blank"]
+:gradle: http://www.gradle.org/[Gradle, window="_blank"]
+:grails: http://grails.org[Grails, window="_blank"]
+:groovy: http://groovy.codehaus.org[Groovy, window="_blank"]
+:junit: http://junit.org/[JUnit, window="_blank"]
+:mongo: http://www.mongodb.org[MongoDB, window="_blank"]
+:mysql: http://www.mysql.com/[MySQL, window="_blank"]
+:activeMQ: http://www.activemq.com[ActiveMQ, window="_blank"]
+:rest: http://en.wikipedia.org/wiki/Representational_state_transfer[REST, window="_blank"]
+:jira: https://www.atlassian.com/software/jira["Atlassian Jira", window="_blank"]
+:stash: https://www.atlassian.com/software/stash["Atlassian Stash", window="_blank"]
+:bamboo: https://www.atlassian.com/software/bamboo["Atlassian Bamboo", window="_blank"]
+:spock: https://code.google.com/p/spock/[Spock, window="_blank"]
+:spring: http://spring.io[Spring, window="_blank"]
+:tomcat: http://tomcat.apache.org/[Apache Tomcat, window="_blank"]
+:monsanto: http://www.monsanto.com[Monsanto, window="_blank"]
+:icons: font
+:toc:
+:toc-placement: preambe
+
+toc::[]
+
+== Headline
+
+Software developer with a love of performance and scalability. 
+
+== Experience
+
+[big]*{williams} +
+*__Senior Software Engineer__* +
+July 2013 - Present
+
+* Middletier development using Grails on the Amigo application. This application utilizes JMS, Redis, Mongo and Oracle. All communication is REST based with the front end being a single page application written in ExtJS.
+* Developed a security service utilized by Amigo and 4 other internal applications.
+* Developed Grails plugins for security, server proxying and common micro services.
+* Responsible for server setup, configuration and monitor scripts. Scripts written in bash and groovy
+* Set architectural and technical decisions for application, from which other groups followed.
+* Mentored other developers in Grails, unit testing, and general Java.
+* Setup {stash} and {bamboo}. Migrated team from SVN to Git.
+
+
+[big]*{monsanto} - * +
+*__Technical Lead - Frameworks__* +
+July 2011 – July 2013
+
+* Continuous enhancement of the Experiment Manager application.
+* Developer on the Greenhouse Manager application.
+* Applications used SwiXML for user interface layout, hibernate for ORM and Spring for component configuration.
+
+
+[big]*Aeris Communication* +
+*__Senior Developer__* +
+January 2011 - December 2011
+
+* Developed several portlets running on Liferay Portal.
+* Maintenance of SOAP based web services that the portal communicates with
+* Portlets and web services provide business customers the ability to activate and maintain mobile-to-mobile devices on the Aeris network.
+* Some functionality written in Grails that communicates with Netsuite for invoicing and support tickets.
+
+
+[big]*Syntervision* +
+*__Developer__* +
+May 2010 - December 2010
+
+* Development of their network management software, Oasis. Wrote pollers that communicated via SNMP to various systems for metrics gatherers. 
+* Built reports using their in-house reporting system in java as well as enhancements to that application.
+
+[big]*BoAndDeeMo.com* +
+*__Contracted Development* +
+March 2010 - July 2010
+
+* Developed the eCommerce site BoAndDeeMo.com for Las Vegas based company specializing in couture dog apparel.
+* Written in Grails, running on Ubuntu with a MySql backend.
+* Integrated with Authorize.net for payment processing
+
+== Skills
+
+[width="50%", float="left", cols="^m,^m,^m", frame="topbot", options="header"]
+|=======
+3+<|Current
+|Java |{groovy} |{grails} |{mongo} |{spock}
+|{git} |{spock} |{stash} |{oracle} |{bamboo}
+|{activeMQ} |{tomcat} |{junit} |{rest} |{jira}
+|{jira} |HTML |CSS |JavaScript |{mysql}
+|=======
+
+[width="50%", cols="^m,^m,^m", frame="topbot", options="header"]
+|=======
+3+<|Previous
+|{spring} |Microsoft SQL Server| PostgreSQL |JSP
+|Java Servlets |Hibernate |Ant
+|IBM WebSphere | Subversion |CVS
+|{eclipse} |EJB
+|=======
+
+
+== Open Source Contributions
+
+* http://github.com/jdpgrailsdev[Personal GitHub Account, window="_blank"]
