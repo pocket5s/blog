@@ -18,3 +18,5 @@ I was never what one might call a keyboard master with TextMate. The biggest fea
 The split pane feature would be nice as well. I don't need it often, but occasionally it would be handy, so I'm going to mess with that.
 
 I can see myself going through several themes as well. I always have a hard time finding one that I really like.
+
+The best part about Atom is, unlike TextMate or Sublime, it is free :)
