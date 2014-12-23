@@ -1,0 +1,20 @@
+title=Just found Atom
+date=2014-12-23
+type=post
+tags=atom
+status=published
+~~~~~~
+
+While watching a few videos on Ember JS, I noticed a lot of Mac folks were using Sublime Text. I've been a TextMate user for many years now, but I thought it would be interesting to see what Sublime had to offer.
+
+Well, along the way doing some google search on Git integration, I came across Atom, which was released by GitHub. Surely GitHub _has_ to have excellent Git integration right? After downloading Atom and finding a theme I liked, playing with some settings, I opened up one of my projects. I found that, unless I am missing something, Atom doesn't have git commands built in. Really? seemed odd. So I downloaded a few packages to try out.
+
+The first was atomatigit. This seemed overly complicated to use. What I want to be able to commit whatever file has focus in the editor. Is that so hard?
+
+So I uninstalled that, and found git-plus. This is much closer to what I wanted. Sadly the author doesn't maintain it anymore, but it seems to work just fine for now. With that settled, I'm off and running.
+
+I was never what one might call a keyboard master with TextMate. The biggest feature I used was CMD-T, to lookup a file quickly, and Atom supports the same concept thankfully.
+
+The split pane feature would be nice as well. I don't need it often, but occasionally it would be handy, so I'm going to mess with that.
+
+I can see myself going through several themes as well. I always have a hard time finding one that I really like.
