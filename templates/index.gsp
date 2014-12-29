@@ -8,7 +8,14 @@
 	<%published_posts.each {post ->%>
 		<a href="${post.uri}"><h1>${post.title}</h1></a>
 		<p>${post.date.format("dd MMMM yyyy")}</p>
+		<p>
+		  <em>Tags:</em>
+		  <%post.tags.each {tag->%>
+			<a href="/tags/${tag.trim().replace(' ', '-')}.html">${tag}</a>
+			<%}%>
+		</p>
 		<p>${post.body}</p>
+		<p><a href="${post.uri}#disqus_thread">Comments</a></p>
   	<%}%>
 
 	<hr />
