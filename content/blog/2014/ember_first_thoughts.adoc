@@ -14,7 +14,7 @@ Once I made my decision, I spent lots of time reading the guide, looking at tuto
 === No CLI for me
 I made the conscience choice to not go the route of using ember-cli. I had a feeling I'd get caught up in nodejs and build hell and that would make me quit in a hurry. I just wanted something simple to work from, so the basic zip file starter setup was just fine.
 
-I also decided to fixate on a back end at this time. So initially just a couple simple js files and use some fixtures for temp data. Later on I'll work on integrating a Grails back end operating as a JSON based web service.
+I also decided to not fixate on a back end at this time. So initially just a couple simple js files and use some fixtures for temp data. Later on I'll work on integrating a Grails back end operating as a JSON based web service.
 
 === My sample domain
 The app I chose to work with is a potential contracted application. Yeah I know it is bad form to learn something new while building for someone else, but I'm not yet under contract for it, so I'm learning on my own dime ;)
