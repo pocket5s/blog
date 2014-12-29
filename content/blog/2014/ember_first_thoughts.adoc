@@ -1,0 +1,79 @@
+title=EmberJS First Thoughts
+date=2014-12-29
+type=post
+tags=ember
+status=published
+~~~~~~
+
+I've been looking at javascript frameworks for single page apps again. I've used Backbone with Marionette on a smallish project about a year ago and had some success with it, but felt it was time to see what else what out there.
+
+After doing lots of Googling for ABC vs XYZ and reading lots of blogs, watching videos and all that, I decided to give Ember a shot. I can't say for certain that it was one particular feature over another that lead me down this path, but I think it had a lot to do with not being too bulky (ExtJS) yet was more than a bare bones (Backbone) famework.
+
+Once I made my decision, I spent lots of time reading the guide, looking at tutorials and watching videos. I must say the docs are very nice and cover most aspects that a new user would need, so that's a definite plus. Last night I finally made the plunge to download the starter zip and see what I could come up with.
+
+=== No CLI for me
+I made the conscience choice to not go the route of using ember-cli. I had a feeling I'd get caught up in nodejs and build hell and that would make me quit in a hurry. I just wanted something simple to work from, so the basic zip file starter setup was just fine.
+
+I also decided to fixate on a back end at this time. So initially just a couple simple js files and use some fixtures for temp data. Later on I'll work on integrating a Grails back end operating as a JSON based web service.
+
+=== My sample domain
+The app I chose to work with is a potential contracted application. Yeah I know it is bad form to learn something new while building for someone else, but I'm not yet under contract for it, so I'm learning on my own dime ;)
+
+This first scenario was going to have 3 select boxes for narrowing down a list of vehicles. First one having the make, the second the model and the third the year. I have to actually have select boxes doing anything, but what I did do was get some familiarity with the ember data package.
+
+=== Ember Data
+I have to admit, coming from the Backbone/Marionette world where defining a real domain model was a royal pain, ember data is very nice so far. My model consists of fourt domain objects, a single route and a single view so far. All I did was render out the object model into unordered, nested lists to see how it all works. Other than a few issues where the fixture data was being setup, it works pretty well.
+
+Here are the current models:
+[source,js]
+----
+App.VehicleMake = DS.Model.extend({
+  name: DS.attr('string'),
+  models: DS.hasMany('vehicleModel', {async:true})
+});
+
+App.VehicleModel = DS.Model.extend({
+  name: DS.attr('string'),
+  parent: DS.belongsTo('vehicleMake'),
+  vehicles: DS.hasMany('vehicle', {async:true})
+});
+
+App.Vehicle = DS.Model.extend({
+  vehicleModel: DS.belongsTo('vehicleModel', {async:true}),
+  year: DS.attr()
+});
+
+App.Product = DS.Model.extend({
+  name: DS.attr('string'),
+  msrp: DS.attr('float'),
+  sku: DS.attr('string'),
+  weight: DS.attr('string'),
+  description: DS.attr('string'),
+  image: DS.attr('string'),
+  vehicles: DS.hasMany('vehicle', {async:true})
+});
+----
+
+I found that if I didn't have the async:true on the relationships, they didn't get 'loaded' from the fixtures. You can also tell that ember data is rapidly moving target as many of the examples you see online via blogs or stackexchange show fixture setups and model relationships defined in different ways. That lead to some minor confusion, but thankfully the ember site itself was a decent enough resource that when in doubt I referred to it.
+
+=== Multiple model route
+Unless I missed something, the docs weren't that clear on what to do with a route that needs to return multiple models. A bit of searching lead me to an answer, via the RSVP.hash function.
+
+[source,js]
+----
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    return Ember.RSVP.hash({
+      makes: this.store.find('vehicleMake'),
+      products: this.store.find('product')
+    });
+  }
+});
+----
+
+That worked just fine.
+
+=== Next steps
+So that was all done in a couple hours last night. Doesn't look like much, but hey I'm just starting :)
+
+Next step for me will be to render actual select boxes instead of nested lists. I have seen the select component on the ember site so I may try that, but we'll see. Then I'll add in more routes to work with picking a value from one select to trigger populating the next one, etc.

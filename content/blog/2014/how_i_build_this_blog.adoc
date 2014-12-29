@@ -1,0 +1,20 @@
+title=How I Build This Blog
+date=2014-12-29
+type=post
+tags=jbake
+status=published
+~~~~~~
+
+Inspired by a comment on my link:/blog/2014/new_blog.html[New Blog (again) post], I decided to share how I build my JBake blog. The commenter referenced link:https://melix.github.io/blog/2014/02/hosting-jbake-github.html[this blog post], where the author used Gradle to build and publish his blog to github.io.
+
+Well, mine isn't nearly that elaborate. I don't publish to github.io, so all I did is write a four line shell script.
+
+[source,bash]
+----
+jbake
+cd output
+scp -r * cooluser@robertmcintosh.me:/static/file/directory
+cd ..
+----
+
+Nothing fancy there. I suppose I could have used gradle, but it wasn't necessary for me. I do use github to store my source files however. A few others do, as seen on the link:http://jbake.org/community/sites.html[jbake community page]. That was quite helpful for me, as the docs don't cover some things and their source files helped fill in the blanks.
