@@ -1,0 +1,46 @@
+title=Grails With Billion Record Mongo Collection
+date=2015-01-05
+type=post
+tags=grails,mongo
+status=published
+~~~~~~
+
+The app that I am working on at work is a grails app that deals with a variety of data and started out with a traditional Oracle database. One of the primary features of this application is being able to see trending data. This comes get loaded via a JMS queue and comes in batches of 15,000 to 60,000 records every 1 to 1.5 minutes. Roughly a million records an hour, give or take.
+
+The requirements for the application were to maintain 90 days worth of data, the remaining data gets rolled into a data warehouse. So far no out of the ordinary requirement. The loading of the data took a little work to get performant and all that, but all went well.
+
+=== Until...
+With about 60 days worth of data, we started seeing some slowness in the queries for data in the data set. We query this data in small chunks of 7 days usually. At first we started looking at some caching solutions. However doing some quick match we realized to have a cache big enough to hold even 7 days worth of data was way out of our reach. It would require buying dedicated hardware big large amounts of memory, or lots of VMs with medium amounts of memory. Going dedicated would hav been painful. This company likes to run everything on small VMs when they can. We could get lots of VMs, but it seemed like a future maintainence nightmare.
+
+Yes, we had proper indexing in place, but it was still just too slow.
+
+==== Solution One
+Our first solution was to have a short term, on demand cache. The UI is built in ExtJS. So what we did was send calls to the server to prefetch the data as the user was selecting it. The idea was that once the user was done selecting the data items they wanted to chart, and actually brought up the chart, we would have gotten it loaded and cached for use.
+
+==== Solution Two
+That kind of worked. There was the off chance that something wasn't ready to be seen by time the user was ready. So we went a slight detour and went to a push model. We were already doing push for other features, so it wasn't terribly hard to implement it. As before we fire off an async request to get the data, but instead of caching it, the server pushes the data once it has been loaded to the client. The client UI gets notified that the data is ready. All was right with the world.
+
+==== Solution Three
+Well almost... The queries would still take a couple seconds each. Even though they were done asynchronously, the query times were still a bit too long to hide from the user. On a whim, I had the idea to use MongoDB as a cache. Instead of a full on in-memory cache like Redis (which we use for other stuff), perhaps mongo could be a short term, small persistent cache.
+
+So, I set about making that happen. Converting the domain from Oracle to MongoDB was not big deal, given there was the mongo gorm plugin. I then created a groovy script to reload the mongo cache with some existing data from oracle. All went well.
+
+We then had the bright idea to see at what point does mongo become a bottleneck like oracle. So, we pointed our loaders to mongo full time and let it build up data.
+
+At 500 million records in, we were seeing query times of 15-50 milliseconds, give or take. Remember, we are also doing good size insertions every 1-1.5 minutes as well.
+
+A few days later we hit 750 million. Query times remained the same. We were quite optimistic.
+
+=== The Billion Mark
+Then we hit a billion records over one weekend. I quickly pulled the app up, loaded up the trending screen and let it fire off some queries. Watching the logs, I was seeing query times of... 20-100ms, with most in the 20-50ms range. Hot damn we were on to something.
+
+We quickly decided to not only drop oracle for the trending data, but to also have the UI do synchronous calls and eliminate the push process. The queries were just so fast we didn't need the extra code to make the push happen. We are also going to drop oracle completely and use mongo for all our database needs. It will help with a few other features that currently require some stored procs and materialize views.
+
+Then this morning while fixing some other issue, I checked the stats on the collection and it was at 1.45 billion records. I had forgotten to set up the script to trim the collection at 90 days. I had done it for dev, but not qa yet. Well I had to see what this performance was like, so I loaded up the app in qa and checked. Yep, still 20-50ms. Some were as fast at 10 or 15ms.
+
+Granted, a billion records in some domains is not uncommon. However, we are running on a linux VM with 32gb of ram and the application itself is also on the same VM. Our data set on disc is 19gb and one of the indexes is 9gb. It should be noted that we are using the TokuMX version of mongo, which compresses the indexes and datasets. I do not have numbers for a pure mongo setup. The compression was the important factor in my choosing TokuMX, given our limited RAM.
+
+=== Going To Production
+Our application is currently not in production, but I have setup the production servers for mongo use. We have 4 servers currently. 3 are setup in a replicaset with the 4th as an arbiter. Our security service is using those mongo instances currently and this application will  use it them as well when it is ready for prod in the coming month or so.
+
+A side benefit is the replica sets. The distaster recovery processes here are... interesting to say the least. However, with 3 replicas of our data on 3 different physical machines, we have essentially real-time backups of our data, unlike the rest of the apps here that rely on nightly backups. 
