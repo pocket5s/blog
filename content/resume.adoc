@@ -31,7 +31,7 @@ toc::[]
 
 == Headline
 
-Software developer with a love of performance and scalability. 
+Software developer with a love of performance and scalability.
 
 == Experience
 
@@ -71,11 +71,11 @@ January 2011 - December 2011
 *__Developer__* +
 May 2010 - December 2010
 
-* Development of their network management software, Oasis. Wrote pollers that communicated via SNMP to various systems for metrics gatherers. 
+* Development of their network management software, Oasis. Wrote pollers that communicated via SNMP to various systems for metrics gatherers.
 * Built reports using their in-house reporting system in java as well as enhancements to that application.
 
 [big]*BoAndDeeMo.com* +
-*__Contracted Development* +
+*__Contracted Development__* +
 March 2010 - July 2010
 
 * Developed the eCommerce site BoAndDeeMo.com for Las Vegas based company specializing in couture dog apparel.
