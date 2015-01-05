@@ -29,7 +29,7 @@ We then had the bright idea to see at what point does mongo become a bottleneck 
 
 At 500 million records in, we were seeing query times of 15-50 milliseconds, give or take. Remember, we are also doing good size insertions every 1-1.5 minutes as well.
 
-A few days later we hit 750 million. Query times remained the same. We were quite optimistic.
+A few days later we hit 750 million. Query times remained the same. We were quite optimistic. I should also note that the UI takes longer in most cases to parse the resulting json data than it does to query it from mongo :)
 
 === The Billion Mark
 Then we hit a billion records over one weekend. I quickly pulled the app up, loaded up the trending screen and let it fire off some queries. Watching the logs, I was seeing query times of... 20-100ms, with most in the 20-50ms range. Hot damn we were on to something.
@@ -43,4 +43,4 @@ Granted, a billion records in some domains is not uncommon. However, we are runn
 === Going To Production
 Our application is currently not in production, but I have setup the production servers for mongo use. We have 4 servers currently. 3 are setup in a replicaset with the 4th as an arbiter. Our security service is using those mongo instances currently and this application will  use it them as well when it is ready for prod in the coming month or so.
 
-A side benefit is the replica sets. The distaster recovery processes here are... interesting to say the least. However, with 3 replicas of our data on 3 different physical machines, we have essentially real-time backups of our data, unlike the rest of the apps here that rely on nightly backups. 
+A side benefit is the replica sets. The distaster recovery processes here are... interesting to say the least. However, with 3 replicas of our data on 3 different physical machines, we have essentially real-time backups of our data, unlike the rest of the apps here that rely on nightly backups.
