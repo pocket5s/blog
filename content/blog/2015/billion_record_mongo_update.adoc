@@ -1,0 +1,8 @@
+title=Billion Record Mongo Update
+date=2015-01-21
+type=post
+tags=grails,mongo
+status=published
+~~~~~~
+
+A quick update to my previous post on our Grails app and testing with Mongo. While our query time were excellent, it seems iterating over those result sets were much better. At the moment I am not sure if iterating over the result set is the issue or serializing the data into JSON is the issue, or a combination. I plan to do a test dropping down to the the mongo driver itself and bypassing GORM and see what that does. 
