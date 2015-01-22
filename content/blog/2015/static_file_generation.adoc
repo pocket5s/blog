@@ -1,0 +1,90 @@
+title=Static File Cache With Grails
+date=2015-01-22
+type=post
+tags=grails
+status=published
+~~~~~~
+
+It is a fairly common practice to front a grails app with a static web server such as nginx for serving static files. That is all good and fine, however I have used a technique of generating static HTML files within grails as a 'cache' for several years on some projects. This technique is especially useful if you have an app that is running on a limited resource server, like many VPS solutions where ram is limited and the content rarely changes.
+
+=== Generating the page
+The first step of course is to generate the content, store it in a variable and then save that content as a file in a directory that the web server has access to.
+
+This is easily done in a controller and using a GSP taglib. Here is an example:
+[source,html]
+----
+<g:applyLayout name="main">
+<html>
+.... content here ....
+</html>
+</g:applyLayout>
+----
+
+This file needs to be a GSP template. With that, we render it in a controller:
+[source,groovy]
+----
+def content = g.render( template:'templateName', model:[whatever_model_you_need] )
+----
+
+=== Caching the content
+Now that we have the generated content, we can cache that content into a static file. I use a service to do this:
+[source,groovy]
+....
+import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
+class CacheService {
+  /**
+   * params key - the filename to store
+   * params content - the generated html
+   */
+  def add( key, content ) {
+    switch( GrailsUtil.environment ) {
+      case "development" :
+        //break
+      case "production" :
+        try {
+          if( "/" == key || key == "/store/" )
+            key = key + "index.html"
+
+          if( !key.startsWith("/") )
+            key = "/" + key
+          def f = new File( CH.config.cachedir.toString() + key.substring(0,key.lastIndexOf('/')) )
+          if( f.exists() || f.mkdirs() ) {
+            new File( CH.config.cachedir.toString() + key ).write( content.toString() )
+          }
+          else {
+            log.warn "COULD NOT MAKE DIRECTORY ${f.absolutePath}"
+          }
+        }
+        catch( Exception e ) {
+          log.error e.message, e
+        }
+    }
+  }
+}
+....
+
+Should be easy to follow, but I'll walk through it.
+
+First thing it does is not actually cache anything in dev mode, but of course you can choose to not do that. The first part of the production block checks to see if the 'key' is the index page. Otherwise it uses the key as the name of the file.
+
+You may notice the code doesn't tack on the html extension. That is because the key contains it. We get it from the controller, so the full example would be like this:
+[source,groovy]
+....
+def key = request.forwardURI
+
+// do some logic here..
+def content = g.render( template:'templateName', model:[whatever_model_you_need] )
+
+cacheService.add( key, content )
+....
+
+The forwardURI is the important part. Grails will allow urls ending with .html (or other extensions), and the forwardURI contains that extension and thus used as the key.
+
+I have a corresponding 'remove' method on the cache service so that if the content changes we can remove the static file and it will get regenerated on the next request.
+
+Using this method, nginx serves the html pages with great speed and almost no CPU usage, allowing the grails app to sit idle and only perform actions that require processing. The code above is part of an ecommerce app, so the grails app only gets called for things like checkout, adding an item to a wishlist, logging in, that kind of thing. It allows to deploy the app on a small VPS and have resource issues, thus saving money.
+
+=== Looking forward
+I haven't used this technique in a while as I haven't written an app that needed it. However, I recently started messing with EmberJS and it occured to me that a single page app could use this technique for generating static json files which are requested by the client. In particular things like lookup data or other data that doesn't change very often.
+
+I plan on exploring this in the very near future.
